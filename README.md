@@ -20,8 +20,8 @@ Este proyecto forma parte de la **entrega final de la materia Ingeniería del So
 ```
 ├── index-requerimientos.html                                        # Página de inicio interactiva
 ├── styles.css                                        # Hoja de estilos global
-├── reqfun.html     # Tabla de requerimientos funcionales
-├── reqnofun.html  # Tabla de requerimientos no funcionales
+├── reqfun.html                                       # Tabla de requerimientos funcionales
+├── reqnofun.html                                     # Tabla de requerimientos no funcionales
 ├── img/
 │   └── bakery.png                                   # Captura del índice
 └── README.md
