@@ -23,7 +23,7 @@ Este proyecto forma parte de la **entrega final de la materia Ingeniería del So
 ├── reqfun.html                                       # Tabla de requerimientos funcionales
 ├── reqnofun.html                                     # Tabla de requerimientos no funcionales
 ├── img/
-│   └── bakery.png                                   # Captura del índice
+│   └── bakery.png                                  
 └── README.md
 ```
 
