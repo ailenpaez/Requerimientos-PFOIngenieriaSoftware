@@ -1,0 +1,313 @@
+/* ============================================================
+   La Espiga de Oro S.R.L. — Especificación de Requerimientos
+   styles.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+
+/* ── VARIABLES ── */
+:root {
+  --gold:        #B8860B;
+  --gold-light:  #D4A017;
+  --gold-pale:   #F5E6C0;
+  --cream:       #FBF6EC;
+  --brown:       #3B2A14;
+  --brown-mid:   #6B4C2A;
+  --white:       #FFFFFF;
+  --rf-color:    #7B3F00;
+  --rnf-color:   #1A3A5C;
+  --rf-bg:       #FFF8EE;
+  --rnf-bg:      #EEF3FA;
+  --rf-border:   #C8860A;
+  --rnf-border:  #1E4976;
+  --shadow:      0 8px 40px rgba(59, 42, 20, 0.13);
+}
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BODY ── */
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow-y: auto;
+  padding: 40px 0;
+}
+
+/* ── BACKGROUND PATTERN ── */
+.bg-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.10;
+}
+
+/* ── OVERLAY ── */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(251, 246, 236, 0.55) 30%,
+    rgba(251, 246, 236, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── CONTAINER ── */
+.container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── LOGO AREA ── */
+.logo-area {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeDown 0.7s ease both;
+}
+
+.logo-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 10px auto;
+}
+
+.logo-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--brown);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.logo-title span {
+  color: var(--gold);
+}
+
+.logo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-mid);
+  margin-top: 4px;
+}
+
+.logo-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--brown-mid);
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* ── HERO IMAGE ── */
+.hero-image {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 28px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  text-align: center;
+  background: transparent;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── CARDS GRID ── */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  width: 100%;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* ── CARD BASE ── */
+.card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 36px 28px 32px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  border: 1.5px solid transparent;
+  box-shadow: var(--shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 10px 10px 0 0;
+  transition: opacity 0.22s ease;
+}
+
+.card.rf::before  { background: var(--rf-border); }
+.card.rnf::before { background: var(--rnf-border); }
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(59, 42, 20, 0.18);
+}
+
+.card.rf:hover  { border-color: var(--rf-border); }
+.card.rnf:hover { border-color: var(--rnf-border); }
+
+/* ── CARD ICON ── */
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.rf  .card-icon { background: #FFF0D0; }
+.card.rnf .card-icon { background: #DDE8F8; }
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ── CARD TITLE ── */
+.card-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--brown);
+}
+
+/* ── CARD DESCRIPTION ── */
+.card-desc {
+  font-size: 0.82rem;
+  color: #7A6A55;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* ── CARD COUNT BADGE ── */
+.card-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+.card.rf  .card-count { background: #FFF0D0; color: var(--rf-color); }
+.card.rnf .card-count { background: #DDE8F8; color: var(--rnf-color); }
+
+/* ── CARD ARROW ── */
+.card-arrow {
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.card.rf  .card-arrow { background: var(--rf-color); }
+.card.rnf .card-arrow { background: var(--rnf-color); }
+
+.card-arrow svg {
+  width: 13px;
+  height: 13px;
+}
+
+.card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── FOOTER NOTE ── */
+.footer-note {
+  margin-top: 30px;
+  font-size: 0.72rem;
+  color: #6B4C2A;
+  letter-spacing: 0.06em;
+  text-align: center;
+  animation: fadeUp 0.7s 0.35s ease both;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 520px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-title {
+    font-size: 2rem;
+  }
+
+  .hero-image {
+    max-width: 100%;
+  }
+}

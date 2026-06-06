@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Requerimientos Funcionales — La Espiga de Oro S.R.L.</title>
+<style>
+  
+
+  :root {
+    --gold:        #B8860B;
+    --gold-light:  #D4A017;
+    --gold-pale:   #FDF6E3;
+    --gold-border: #E8C96A;
+    --brown-dark:  #3B2A14;
+    --brown-mid:   #6B4C2A;
+    --cream:       #FAF5E9;
+    --white:       #FFFFFF;
+    --gray-light:  #F5F0E8;
+    --gray-mid:    #D6CCBA;
+    --text-main:   #2C1F0E;
+    --text-muted:  #7A6A55;
+    --rf-accent:   #7B3F00;
+    --rnf-accent:  #1A3A5C;
+    --rf-bg:       #FFF8EE;
+    --rnf-bg:      #EEF3FA;
+    --rf-header:   #C8860A;
+    --rnf-header:  #1E4976;
+    --tag-needed:  #5C8A3C;
+    --tag-needed-bg: #EAF5E0;
+    --tag-critical:#C0392B;
+    --tag-critical-bg:#FDECEA;
+    --tag-high:    #B5631A;
+    --tag-high-bg: #FEF0E3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    padding: 40px 20px 60px;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 24px;
+    border-bottom: 3px double var(--gold-border);
+    position: relative;
+  }
+  .page-header::before {
+    content: '✦';
+    display: block;
+    color: var(--gold-light);
+    font-size: 20px;
+    margin-bottom: 8px;
+    letter-spacing: 12px;
+  }
+  .page-header h1 {
+    font-family: Arial, sans-serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--brown-dark);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+  .page-header h1 span {
+    color: var(--gold);
+  }
+  .page-header p {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-family: Arial, sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+    padding: 14px 22px;
+    border-left: 5px solid;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title.rf {
+    color: var(--rf-accent);
+    border-color: var(--rf-header);
+    background: var(--rf-bg);
+  }
+  .section-title.rnf {
+    color: var(--rnf-accent);
+    border-color: var(--rnf-header);
+    background: var(--rnf-bg);
+  }
+  .section-title .icon { font-size: 1.3rem; }
+
+  /* ── WRAPPER ── */
+  .section-block { margin-bottom: 60px; }
+
+  /* ── TABLE ── */
+  .req-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .req-table thead tr {
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .req-table.rf thead tr { background: var(--rf-header); }
+  .req-table.rnf thead tr { background: var(--rnf-header); }
+
+  .req-table th {
+    padding: 13px 14px;
+    font-weight: 700;
+    text-align: left;
+    vertical-align: middle;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .req-table th:last-child { border-right: none; }
+
+  /* ── ROW STRIPES ── */
+  .req-table tbody tr { vertical-align: top; }
+  .req-table.rf  tbody tr:nth-child(odd)  { background: var(--white); }
+  .req-table.rf  tbody tr:nth-child(even) { background: var(--rf-bg); }
+  .req-table.rnf tbody tr:nth-child(odd)  { background: var(--white); }
+  .req-table.rnf tbody tr:nth-child(even) { background: var(--rnf-bg); }
+
+  .req-table tbody tr:hover { filter: brightness(0.97); }
+
+  .req-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--gray-mid);
+    border-right: 1px solid var(--gray-mid);
+    vertical-align: top;
+  }
+  .req-table td:last-child { border-right: none; }
+  .req-table tbody tr:last-child td { border-bottom: none; }
+
+  /* ── ID BADGE ── */
+  .id-badge {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 3px 9px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .rf  .id-badge { background: #FFF0D0; color: var(--rf-accent); border: 1px solid #E8C070; }
+  .rnf .id-badge { background: #DDE8F8; color: var(--rnf-accent); border: 1px solid #99B8E0; }
+
+  /* ── NAME ── */
+  .req-name { font-weight: 600; color: var(--text-main); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .tag-needed   { background: var(--tag-needed-bg);   color: var(--tag-needed); }
+  .tag-critical { background: var(--tag-critical-bg); color: var(--tag-critical); }
+  .tag-high     { background: var(--tag-high-bg);     color: var(--tag-high); }
+  .tag-no       { background: #F5F5F5; color: #777; }
+
+  /* ── DESCRIPTION CELL ── */
+  .desc-cell { max-width: 320px; }
+  .desc-cell strong { display: block; margin-bottom: 2px; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── LIST ── */
+  .cell-list { padding-left: 16px; margin: 0; }
+  .cell-list li { margin-bottom: 3px; }
+
+  /* ── CRITERIA CELL ── */
+  .criteria-cell { min-width: 180px; }
+  .criteria-cell ol { padding-left: 16px; margin: 0; }
+  .criteria-cell ol li { margin-bottom: 4px; }
+
+  /* ── INPUT/OUTPUT CELL ── */
+  .io-cell { min-width: 160px; }
+  .io-group { margin-bottom: 8px; }
+  .io-group:last-child { margin-bottom: 0; }
+  .io-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 3px; }
+  .io-list { padding-left: 14px; margin: 0; }
+  .io-list li { margin-bottom: 2px; }
+
+  /* ── ELICITATION CELL ── */
+  .elic-cell { min-width: 140px; font-size: 0.84rem; }
+  .elic-cell .elic-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 2px; }
+  .elic-cell .elic-value { margin-bottom: 7px; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--gold-border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .req-table { font-size: 0.8rem; }
+    .req-table th, .req-table td { padding: 9px 10px; }
+    .page-header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<!-- ═══════════════════════════════════════════════
+     TABLA 1 — REQUERIMIENTOS FUNCIONALES
+═══════════════════════════════════════════════ -->
+<div class="section-block">
+  <div class="section-title rf">
+    <span class="icon"></span> Requerimientos Funcionales
+  </div>
+
+  <table class="req-table rf">
+    <thead>
+      <tr>
+        <th style="width:80px">ID</th>
+        <th style="width:165px">Nombre</th>
+        <th style="width:80px">Tipo / Crítico / Prioridad</th>
+        <th style="width:200px">Descripción (Pre · Desc · Post)</th>
+        <th style="width:175px">Entrada / Salida</th>
+        <th style="width:175px">Situaciones Anormales</th>
+        <th style="width:195px">Criterios de Aceptación</th>
+        <th style="width:190px">Proceso de Elicitación</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- RF-01 Gestión Integral de Pedidos (Herrera) -->
+      <tr>
+        <td><span class="id-badge">RF-01</span></td>
+        <td class="req-name">Gestión Integral de Pedidos</td>
+        <td>
+          <span class="tag tag-needed">Necesario</span><br><br>
+          <span class="tag tag-critical">Crítico</span><br><br>
+          <span class="tag tag-high">Alta</span>
+        </td>
+        <td class="desc-cell">
+          <strong>Precondición</strong>El encargado debe acceder al sistema digital.
+          <br><br>
+          <strong>Descripción</strong>Centralizar la toma de pedidos de las 5 sucursales y 10 franquicias para eliminar el uso de WhatsApp.
+          <br><br>
+          <strong>Postcondición</strong>El pedido queda validado y visible para logística.
+        </td>
+        <td class="io-cell">
+          <div class="io-group">
+            <span class="io-label">Entrada</span>
+            <ul class="io-list">
+              <li>ID de Sucursal/Franquicia</li>
+              <li>Listado de productos y cantidades</li>
+              <li>Disponibilidad de stock</li>
+            </ul>
+          </div>
+          <div class="io-group">
+            <span class="io-label">Salida</span>
+            <ul class="io-list">
+              <li>Registro del pedido</li>
+              <li>Orden de producción automática</li>
+              <li>Confirmación al cliente</li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <ol class="cell-list">
+            <li>Falta de stock: el sistema sugiere ajustar el plan de producción.</li>
+            <li>Campos vacíos: mensaje de error por falta de datos obligatorios.</li>
+          </ol>
+        </td>
+        <td class="criteria-cell">
+          <ol>
+            <li>Los datos deben validarse automáticamente contra el inventario.</li>
+            <li>Información integrada y disponible en tiempo real para todas las áreas.</li>
+          </ol>
+        </td>
+        <td class="elic-cell">
+          <span class="elic-label">Fuente</span>
+          <div class="elic-value">Área Administrativa y Encargados de sucursales.</div>
+          <span class="elic-label">Técnica</span>
+          <div class="elic-value">Entrevista Grupal (Focus Group).</div>
+          <span class="elic-label">Confirmación</span>
+          <div class="elic-value">Reunión de seguimiento con prototipo del flujo "To-Be".</div>
+        </td>
+      </tr>
+
+      <!-- RF-02 Gestión de Producción e Inventario (Sebas) -->
+      <tr>
+        <td><span class="id-badge">RF-02</span></td>
+        <td class="req-name">Gestión de Producción e Inventario</td>
+        <td>
+          <span class="tag tag-needed">Necesario</span><br><br>
+          <span class="tag tag-critical">Crítico</span><br><br>
+          <span class="tag tag-high">Alta</span>
+        </td>
+        <td class="desc-cell">
+          <strong>Precondición</strong>El catálogo de productos, recetas, niveles mínimos de stock e inventario actual deben estar cargados en el sistema.
+          <br><br>
+          <strong>Descripción</strong>El sistema registrará y controlará en tiempo real el stock de materias primas y productos terminados. A partir de los pedidos y el historial de ventas, generará automáticamente un plan de producción diario e indicará qué productos elaborar, en qué cantidad y en qué turno.
+          <br><br>
+          <strong>Postcondición</strong>El sistema registra el movimiento de stock, actualiza el inventario y genera el plan de producción para los encargos del día.
+        </td>
+        <td class="io-cell">
+          <div class="io-group">
+            <span class="io-label">Entrada</span>
+            <ul class="io-list">
+              <li>Pedidos confirmados de sucursales y franquicias</li>
+              <li>Recetas y fórmulas de producción</li>
+              <li>Stock actual de materias primas</li>
+              <li>Capacidad de producción disponible</li>
+              <li>Historial de ventas por producto y sucursal</li>
+            </ul>
+          </div>
+          <div class="io-group">
+            <span class="io-label">Salida</span>
+            <ul class="io-list">
+              <li>Plan de producción diario generado automáticamente</li>
+              <li>Stock actualizado en tiempo real</li>
+              <li>Alertas automáticas de stock mínimo</li>
+              <li>Reporte de productos más vendidos y variación de demanda</li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <ol class="cell-list">
+            <li>Stock insuficiente: alerta indicando el insumo faltante y la cantidad necesaria.</li>
+            <li>Producto fuera de catálogo: el sistema rechaza el ítem y notifica al operador.</li>
+            <li>Capacidad excedida: el sistema informa y sugiere distribuir la producción en un turno adicional.</li>
+          </ol>
+        </td>
+        <td class="criteria-cell">
+          <ol>
+            <li>El plan de producción se genera correctamente en función de los pedidos y el stock disponible.</li>
+            <li>El stock se actualiza en tiempo real ante cada movimiento de ingreso o egreso.</li>
+            <li>Las alertas de stock mínimo se emiten automáticamente cuando el nivel cae por debajo del umbral configurado.</li>
+            <li>El tablero de métricas refleja con exactitud los productos más vendidos y la variación de demanda.</li>
+          </ol>
+        </td>
+        <td class="elic-cell">
+          <span class="elic-label">Fuente</span>
+          <div class="elic-value">Jefe de Planta y Encargado Administrativo.</div>
+          <span class="elic-label">Técnica</span>
+          <div class="elic-value">Entrevista semiestructurada individual + observación directa del proceso productivo.</div>
+          <span class="elic-label">Confirmación</span>
+          <div class="elic-value">Documento borrador enviado por correo; reunión de confirmación con ajustes incorporados y firmado de conformidad por ambos stakeholders.</div>
+        </td>
+      </tr>
+
+      <!-- RF-03 Gestión Logística y Distribución (Vilaseco) -->
+      <tr>
+        <td><span class="id-badge">RF-03</span></td>
+        <td class="req-name">Gestión Logística y Distribución</td>
+        <td>
+          <span class="tag tag-needed">Necesario</span><br><br>
+          <span class="tag tag-critical">Crítico</span><br><br>
+          <span class="tag tag-high">Alta</span>
+        </td>
+        <td class="desc-cell">
+          <strong>Precondición</strong>El pedido debe encontrarse validado y aprobado por el sistema, con stock disponible para distribución.
+          <br><br>
+          <strong>Descripción</strong>El sistema permitirá gestionar y coordinar la distribución de productos hacia sucursales y franquicias, organizando entregas, rutas y seguimiento logístico en tiempo real. Incluye automatización de órdenes, seguimiento de flota, alertas por retraso y priorización por demanda estacional.
+          <br><br>
+          <strong>Postcondición</strong>La entrega quedará registrada correctamente en el sistema, actualizando el estado del pedido y generando trazabilidad completa.
+        </td>
+        <td class="io-cell">
+          <div class="io-group">
+            <span class="io-label">Entrada</span>
+            <ul class="io-list">
+              <li>Pedidos confirmados</li>
+              <li>Datos de sucursales y franquicias</li>
+              <li>Información de stock disponible</li>
+              <li>Disponibilidad y capacidad de flota</li>
+            </ul>
+          </div>
+          <div class="io-group">
+            <span class="io-label">Salida</span>
+            <ul class="io-list">
+              <li>Orden de distribución generada</li>
+              <li>Estado actualizado de entrega</li>
+              <li>Registro de entregas realizadas</li>
+              <li>Reporte logístico</li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <ol class="cell-list">
+            <li>El pedido no posee stock suficiente.</li>
+            <li>La ruta logística no puede ser generada.</li>
+            <li>El sistema no logra registrar la entrega.</li>
+            <li>Datos del destino incorrectos.</li>
+            <li>El vehículo asignado no se encuentra disponible.</li>
+          </ol>
+        </td>
+        <td class="criteria-cell">
+          <ol>
+            <li>El sistema genera correctamente la orden de distribución.</li>
+            <li>El usuario puede visualizar el estado de la entrega (preparación, camino, entregado).</li>
+            <li>La entrega queda registrada exitosamente.</li>
+            <li>El sistema actualiza correctamente la trazabilidad.</li>
+          </ol>
+        </td>
+        <td class="elic-cell">
+          <span class="elic-label">Fuente</span>
+          <div class="elic-value">Jefe de Logística y Distribución; participación indirecta de encargados de sucursales, personal de distribución y área de producción.</div>
+          <span class="elic-label">Técnica</span>
+          <div class="elic-value">Entrevista semiestructurada individual.</div>
+          <span class="elic-label">Confirmación</span>
+          <div class="elic-value">Reunión de seguimiento con el jefe de logística y área administrativa; revisión del documento, validación verbal del flujo y aprobación de objetivos funcionales.</div>
+        </td>
+      </tr>
+
+      <!-- RF-04 Generar Reporte de Pedidos (Páez) -->
+      <tr>
+        <td><span class="id-badge">RF-04</span></td>
+        <td class="req-name">Generar Reporte de Pedidos por Período y Sucursal/Franquicia</td>
+        <td>
+          <span class="tag tag-needed">Necesario</span><br><br>
+          <span class="tag tag-critical">Crítico</span><br><br>
+          <span class="tag tag-high">Alta</span>
+        </td>
+        <td class="desc-cell">
+          <strong>Precondición</strong>El usuario debe haber iniciado sesión con un rol que tenga permiso para generar reportes.
+          <br><br>
+          <strong>Descripción</strong>El sistema permitirá generar reportes de pedidos filtrando por fecha, punto de venta y estado. Mostrará el detalle y totales agrupados, con opción de descarga en PDF o Excel. Cada generación quedará registrada en el historial de auditoría.
+          <br><br>
+          <strong>Postcondición</strong>El reporte es generado y disponible para descarga. El evento queda registrado con fecha, hora y usuario.
+        </td>
+        <td class="io-cell">
+          <div class="io-group">
+            <span class="io-label">Entrada</span>
+            <ul class="io-list">
+              <li>Rango de fechas (inicio – fin)</li>
+              <li>Sucursal/franquicia seleccionada (o "Todas")</li>
+              <li>Estado del pedido (Pendiente / En producción / Despachado / Entregado)</li>
+              <li>Formato de salida deseado (PDF / Excel)</li>
+            </ul>
+          </div>
+          <div class="io-group">
+            <span class="io-label">Salida</span>
+            <ul class="io-list">
+              <li>Reporte con pedidos filtrados</li>
+              <li>Totales por punto de venta y por producto</li>
+              <li>Archivo descargable en PDF o Excel</li>
+              <li>Registro en historial de auditoría</li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <ol class="cell-list">
+            <li>Sin pedidos para los filtros aplicados → "No se encontraron pedidos para los filtros aplicados."</li>
+            <li>Usuario sin permisos → "Acceso denegado." y redirección al panel principal.</li>
+            <li>Error al generar el archivo → "No fue posible generar el archivo. Intente nuevamente."</li>
+          </ol>
+        </td>
+        <td class="criteria-cell">
+          <ol>
+            <li>El reporte se genera correctamente con los filtros ingresados.</li>
+            <li>El archivo descargado contiene información correcta y completa.</li>
+            <li>La generación queda registrada en el historial de auditoría.</li>
+          </ol>
+        </td>
+        <td class="elic-cell">
+          <span class="elic-label">Fuente</span>
+          <div class="elic-value">Directora Administrativa y Gerente General.</div>
+          <span class="elic-label">Técnica</span>
+          <div class="elic-value">Entrevista individual semiestructurada + análisis de documentación existente (planillas Excel actuales).</div>
+          <span class="elic-label">Confirmación</span>
+          <div class="elic-value">Prototipo de pantalla presentado en reunión de seguimiento; ambos stakeholders aprobaron e incorporaron el filtro por estado del pedido.</div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

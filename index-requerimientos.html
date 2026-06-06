@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Espiga de Oro S.R.L. — Requerimientos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- BACKGROUND CROISSANTS -->
+  <svg class="bg-pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <pattern id="croissants" x="0" y="0" width="160" height="160" patternUnits="userSpaceOnUse">
+        <g transform="translate(20,20) rotate(-20)">
+          <path d="M0,0 Q30,-18 60,0 Q50,14 30,16 Q10,14 0,0Z" fill="#B8860B"/>
+          <path d="M4,2 Q30,-12 56,2 Q48,12 30,13 Q12,12 4,2Z" fill="none" stroke="#8B6508" stroke-width="1.2"/>
+          <path d="M10,6 Q30,-4 50,6" fill="none" stroke="#8B6508" stroke-width="0.8" opacity="0.6"/>
+          <path d="M16,9 Q30,2 44,9" fill="none" stroke="#8B6508" stroke-width="0.7" opacity="0.5"/>
+          <path d="M0,0 Q-8,8 -4,16 Q4,10 10,6Z" fill="#C89A20"/>
+          <path d="M60,0 Q68,8 64,16 Q56,10 50,6Z" fill="#C89A20"/>
+        </g>
+        <g transform="translate(88,90) rotate(15)">
+          <path d="M0,0 Q28,-16 56,0 Q47,13 28,15 Q9,13 0,0Z" fill="#B8860B"/>
+          <path d="M4,2 Q28,-11 52,2 Q45,11 28,12 Q11,11 4,2Z" fill="none" stroke="#8B6508" stroke-width="1.2"/>
+          <path d="M9,5 Q28,-3 47,5" fill="none" stroke="#8B6508" stroke-width="0.8" opacity="0.6"/>
+          <path d="M15,8 Q28,1 41,8" fill="none" stroke="#8B6508" stroke-width="0.7" opacity="0.5"/>
+          <path d="M0,0 Q-7,7 -3,15 Q4,9 9,5Z" fill="#C89A20"/>
+          <path d="M56,0 Q63,7 59,15 Q52,9 47,5Z" fill="#C89A20"/>
+        </g>
+        <g transform="translate(110,18) rotate(40) scale(0.65)">
+          <path d="M0,0 Q28,-16 56,0 Q47,13 28,15 Q9,13 0,0Z" fill="#B8860B"/>
+          <path d="M4,2 Q28,-11 52,2 Q45,11 28,12 Q11,11 4,2Z" fill="none" stroke="#8B6508" stroke-width="1.2"/>
+          <path d="M0,0 Q-7,7 -3,15 Q4,9 9,5Z" fill="#C89A20"/>
+          <path d="M56,0 Q63,7 59,15 Q52,9 47,5Z" fill="#C89A20"/>
+        </g>
+        <g transform="translate(0,95) rotate(-35) scale(0.55)">
+          <path d="M0,0 Q28,-16 56,0 Q47,13 28,15 Q9,13 0,0Z" fill="#B8860B"/>
+          <path d="M4,2 Q28,-11 52,2 Q45,11 28,12 Q11,11 4,2Z" fill="none" stroke="#8B6508" stroke-width="1.2"/>
+          <path d="M0,0 Q-7,7 -3,15 Q4,9 9,5Z" fill="#C89A20"/>
+          <path d="M56,0 Q63,7 59,15 Q52,9 47,5Z" fill="#C89A20"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#croissants)"/>
+  </svg>
+
+  <div class="bg-overlay"></div>
+
+  <div class="container">
+
+    <div class="logo-area">
+      <div class="logo-line"></div>
+      <div class="logo-title"><span>La Espiga de Oro</span> S.R.L.</div>
+      <div class="logo-line"></div>
+      <div class="logo-tagline">Especificación de Requerimientos | Ing. Software | Comisión E · Grupo 3</div>
+    </div>
+
+    <div class="hero-image">
+      <img src="/img/bakery.png" alt="La Espiga de Oro">
+    </div>
+
+    <div class="cards">
+
+      <a class="card rf" href="/reqfun.html">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="7" height="7" rx="1.5" fill="#7B3F00" opacity="0.85"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5" fill="#7B3F00" opacity="0.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5" fill="#7B3F00" opacity="0.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5" fill="#7B3F00" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="card-title">Requerimientos Funcionales</div>
+        <div class="card-desc">Gestión de pedidos, producción, logística y reportes administrativos del sistema.</div>
+        <div class="card-count">4 requerimientos</div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="card rnf" href="/reqnofun.html">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3" fill="#1A3A5C" opacity="0.9"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="#1A3A5C" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+          </svg>
+        </div>
+        <div class="card-title">Requerimientos No Funcionales</div>
+        <div class="card-desc">Usabilidad, rendimiento, escalabilidad y control de acceso basado en roles del sistema.</div>
+        <div class="card-count">4 requerimientos</div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="footer-note">
+      Grupo 3 &nbsp;·&nbsp; Puche &nbsp;·&nbsp; Herrera &nbsp;·&nbsp; Páez &nbsp;·&nbsp; Vilaseco
+    </div>
+  </div>
+
+</body>
+</html>
